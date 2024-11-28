@@ -55,6 +55,22 @@ export function TeamSearch() {
                     <CommandList>
                         <CommandEmpty>No team found.</CommandEmpty>
                         <CommandGroup>
+                            <CommandItem
+                                value={""}
+                                onSelect={(currentValue) => {
+                                    setValue(currentValue === value ? "" : currentValue)
+                                    router.push(`/`)
+                                    setOpen(false)
+                                }}
+                            >
+                                <Check
+                                    className={cn(
+                                        "mr-2 h-4 w-4",
+                                        value === "" ? "opacity-100" : "opacity-0"
+                                    )}
+                                />
+                                All Players
+                            </CommandItem>
                             {Object.entries(playersWithTeams).map(([teamId, team]) => (
                                 <CommandItem
                                     key={teamId}
