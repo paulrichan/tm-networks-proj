@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "../components/theme-provider";
+import Image from "next/image";
+import { ThemeToggle } from "@/components/theme-toggle";
+import TeamSelector from "@/components/team-selector";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Providers } from "@/providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,12 +29,54 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const data = await mlbPlayers()
+  // const playersByTeam = data.reduce((acc, player) => {
+  //   const playerTeamId = player.teamImage.slice(player.teamImage.lastIndexOf('/') + 1, player.teamImage.lastIndexOf('.'))
+
+  //   if (!acc[playerTeamId]) {
+  //     acc[playerTeamId] = {
+  //       teamImage: player.teamImage,
+  //       players: []
+  //     }
+  //   }
+
+  //   acc[playerTeamId].players.push(player)
+
+  //   return acc
+  // }, {} as Record<string, Team>)
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="min-h-screen">
+              <header className="border-b-2 py-3 z-10 px-2 flex justify-between items-center h-16 w-full fixed bg-inherit backdrop-blur-xl">
+                <Image src="/TruMedia-logo.png" alt="TruMedia Logo" width={`50`} height={50} className="dark:contrast-75 w-auto" priority />
+
+                <ThemeToggle />
+              </header>
+
+
+              <main className="flex">
+                <div className="border-r-2 fixed left-0 w-64 h-[calc(100vh-4rem)] mt-16 p-2 overflow-auto">
+                  <TeamSelector />
+                </div>
+
+                <div className="w-full ml-64 mt-16 p-4">
+                  {children}
+                </div>
+              </main>
+            </div>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
