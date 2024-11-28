@@ -102,7 +102,7 @@ export const gameStats = (data: GameStats[]) => {
 }
 
 const getWeeklyStats = (data: GameStats[]): ChartStats[] => {
-  // Sort data by date
+  // Sort data by date - might be redundant
   const sortedData = [...data].sort((a, b) =>
     new Date(a.date).getTime() - new Date(b.date).getTime()
   );
@@ -167,7 +167,7 @@ const getWeeklyStats = (data: GameStats[]): ChartStats[] => {
 };
 
 const getMonthlyStats = (data: GameStats[]): ChartStats[] => {
-  // Sort data by date
+  // Sort data by date - might be redundant
   const sortedData = [...data].sort((a, b) =>
     new Date(a.date).getTime() - new Date(b.date).getTime()
   );
