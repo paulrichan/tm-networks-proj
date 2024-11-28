@@ -9,7 +9,12 @@ import { useParams } from "next/navigation";
 export default function Page() {
     const params = useParams()
     const { data, isLoading } = usePlayers()
-    const teamData = data?.playersWithTeams[params.teamId as string]
+
+    if (isLoading || !data) {
+        return <p>Loading...</p>
+    }
+
+    const teamData = data.playersWithTeams[params.teamId as string]
 
     return (
         <div className="space-y-2 w-full max-w-[1400px]">
@@ -26,7 +31,7 @@ export default function Page() {
                 </span>
             </div>
 
-            {isLoading || !teamData ? <p>Loading...</p> : <PlayerList players={teamData.players} />}
+            <PlayerList players={teamData.players} />
         </div>
     );
 }
