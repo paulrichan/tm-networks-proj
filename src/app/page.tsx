@@ -11,7 +11,7 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 max-w-[1100px] w-full md:p-2">
       <h2 className="font-semibold">All Players</h2>
 
       <PlayerList players={data.allPlayers} />

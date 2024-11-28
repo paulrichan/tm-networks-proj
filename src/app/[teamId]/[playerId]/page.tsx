@@ -72,7 +72,7 @@ export default function Page() {
     const monthlyStats = aggregateByMonth(playerData);
 
     return (
-        <div className="space-y-4 w-full max-w-[1400px]">
+        <div className="space-y-4 w-full max-w-[1100px]">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -220,7 +220,6 @@ export default function Page() {
                             left: -12,
                             right: 12,
                         }}
-
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis

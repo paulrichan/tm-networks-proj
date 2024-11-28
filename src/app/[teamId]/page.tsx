@@ -17,7 +17,7 @@ export default function Page() {
     const teamData = data.playersWithTeams[params.teamId as string]
 
     return (
-        <div className="space-y-2 w-full max-w-[1400px]">
+        <div className="space-y-2 w-full max-w-[1100px]">
             <div className="flex items-center space-x-2">
                 <Avatar className="w-16 h-16">
                     <AvatarImage src={teamData?.teamImage} alt={teamLookup[params.teamId as string].name} />

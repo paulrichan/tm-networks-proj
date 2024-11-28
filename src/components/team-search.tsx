@@ -28,6 +28,10 @@ export function TeamSearch() {
     const [value, setValue] = React.useState(params.teamId)
     const { data, isLoading } = usePlayers()
 
+    React.useEffect(() => {
+        setValue(params.teamId)
+    }, [params.teamId])
+
     if (isLoading || !data) {
         return <p>Loading...</p>
     }
