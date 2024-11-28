@@ -7,6 +7,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import TeamSelector from "@/components/team-selector";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Providers } from "@/providers";
+import Sidebar from "@/components/sidebar";
+import { TeamSearch } from "@/components/team-search";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -65,13 +67,20 @@ export default function RootLayout({
               </header>
 
 
-              <main className="flex">
-                <div className="border-r-2 fixed left-0 w-64 h-[calc(100vh-4rem)] mt-16 p-2 overflow-auto">
-                  <TeamSelector />
+
+              <main>
+                <div className="md:hidden md:h-0 top-20 relative">
+                  <TeamSearch />
                 </div>
 
-                <div className="w-full ml-64 mt-16 p-4">
-                  {children}
+                <div className="flex">
+                  <Sidebar>
+                    <TeamSelector />
+                  </Sidebar>
+
+                  <div className="flex justify-center w-full md:ml-64 mt-20 md:mt-16 p-2 md:p-4">
+                    {children}
+                  </div>
                 </div>
               </main>
             </div>

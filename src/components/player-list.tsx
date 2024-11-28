@@ -13,8 +13,8 @@ export default function PlayerList({ players }: { players: Player[] }) {
 
     return (
         <div className="space-y-3">
-            <div className="flex items-center gap-3">
-                <div className="flex-1">
+            <div className="flex flex-col-reverse md:flex-row md:items-center gap-3">
+                <div className="flex-1 w-full">
                     <Input placeholder="Search by player name..." onChange={(e) => setSearch(e.currentTarget.value)} />
                 </div>
                 <div className="flex flex-col justify-center items-center w-fit">
@@ -27,7 +27,7 @@ export default function PlayerList({ players }: { players: Player[] }) {
                 </div>
             </div>
 
-            <ul className="grid grid-cols-4 gap-2">
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {players.filter(player => player.playerFullName.toLowerCase().includes(search.toLowerCase())).sort((a, b) => {
                     const firstName = a.playerFullName.split(' ')[0]
                     const lastName = a.playerFullName.split(' ')[1]

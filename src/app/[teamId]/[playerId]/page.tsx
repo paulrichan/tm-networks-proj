@@ -30,6 +30,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { TeamSearch } from "@/components/team-search";
 
 const chartConfig = {
     desktop: {
@@ -73,7 +74,7 @@ export default function Page() {
     const monthlyStats = aggregateByMonth(playerData);
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-4 w-full max-w-[1400px]">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -91,7 +92,7 @@ export default function Page() {
                 </BreadcrumbList>
             </Breadcrumb>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
                 <div>
                     <div className="flex items-center">
                         <Avatar className="w-32 h-32">
@@ -100,7 +101,7 @@ export default function Page() {
 
                         <div>
                             <h2 className="text-2xl font-bold">{playerDetails.playerFullName}</h2>
-                            <div className="flex gap-2">
+                            <div className="flex flex-wrap gap-2">
                                 <Card className="w-24">
                                     <CardHeader className="p-3">
                                         <CardDescription>Position</CardDescription>
@@ -128,7 +129,7 @@ export default function Page() {
                     <div className="mt-4">
                         <h3 className="font-bold">End Season Key Stats</h3>
 
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 flex-wrap">
                             {Object.keys(chartData.lastGame).filter(key => ['HR', 'H', 'AVG', 'OBP', 'SLG', 'OPS'].includes(key)).map((key) => {
                                 return (
                                     <Card className="w-24" key={key}>
@@ -144,7 +145,7 @@ export default function Page() {
                     </div>
                 </div>
 
-                <Card className="p-3 flex-1">
+                <Card className="p-3 flex-1 w-full min-w-[250px]">
                     <CardHeader className="p-0 mb-2">
                         <h4 className="font-bold text-sm text-muted-foreground">AVG per Month</h4>
 
