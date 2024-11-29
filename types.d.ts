@@ -78,7 +78,6 @@ interface GameStats {
 interface AggregatedStats {
     startDate: string;
     endDate: string;
-    month?: string;
     games: number;
     PA: number;
     AVG: number;

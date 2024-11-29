@@ -248,7 +248,6 @@ const calculateStats = (games: GameStats[]): AggregatedStats => {
   return {
     startDate: games[0].date,
     endDate: games[games.length - 1].date,
-    month: games[0].date.substring(0, 7),
     games: games.length,
     PA: totalPA,
     AVG: Number(AVG.toFixed(3)),

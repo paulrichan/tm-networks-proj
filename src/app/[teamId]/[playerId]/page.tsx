@@ -154,7 +154,7 @@ export default function Page() {
                     >
                         <RadarChart data={monthlyStats}>
                             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-                            <PolarAngleAxis dataKey="month" tickFormatter={(value) => new Date(value).toLocaleString('default', { month: 'long' })} />
+                            <PolarAngleAxis dataKey="startDate" tickFormatter={(value) => new Date(value).toLocaleString('default', { month: 'long' })} />
                             <PolarGrid />
                             <Radar
                                 dataKey="AVG"
